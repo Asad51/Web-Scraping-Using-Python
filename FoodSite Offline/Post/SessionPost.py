@@ -1,8 +1,8 @@
 import requests
 import bs4
-
+f = 'Filter Products'
 session = requests.session()
-req = session.post('http://localhost/foodsite/products.php', data=dict(category_id = '7', filter_products = 'Filter Products'))
+req = session.post('http://localhost/foodsite/products.php', data=dict(category_id = '7', filter_products = f))
 soup = bs4.BeautifulSoup(req.content, 'lxml');
 table = soup.find_all('table', {'class': 'information_table'})[0]
 for tr in table.find_all('tr'):
